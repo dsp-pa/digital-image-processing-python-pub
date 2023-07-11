@@ -1,13 +1,13 @@
 [x, y] = meshgrid(linspace(0, 500), linspace(0, 500));
 
-F = 250;
-A = cos(2 * F*  pi * x) + cos(2 * F*  pi * y);
-surf(A)
+A = imread("images/b.jpg");
+A = rgb2gray(A);
+
+surf(A, 'EdgeColor','texturemap', 'FaceLighting','gouraud')
 
 F = fft2(A);
 
-
-F2 =  abs(fftshift(F)) / (500 * 500);
+F2 =  log(abs(fftshift(F)));
 
 figure()
-surf(F2)
+surf(F2, 'EdgeColor','texturemap', 'FaceLighting','gouraud')
